@@ -1,6 +1,6 @@
 #Snippets
 
-When I need some rest, I code something! When it's something useful, I store here.
+When I need some rest, I code something! When it's something useful, I store it here.
 
 Let's see what we got here.
 
