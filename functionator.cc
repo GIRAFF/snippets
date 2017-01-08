@@ -4,9 +4,9 @@
  * Creates an std::function<real(vector<real>)> from reverse Polish
  * notation string.
  *
- *                                3 + sin(x[0] - M_PI)
- * 3 _0 pi - sin + _1 0.5 * / ->  --------------------
- *                                     x[1] * 0.5
+ *                                 3 + sin(x[0] - M_PI)
+ * 3 _0 pi - sin + _1 0.5 * /  ->  --------------------
+ *                                      x[1] * 0.5
  *
  * It's not tested for memory or CPU usage yet, so feel free to make
  * it better!
@@ -32,7 +32,8 @@ typedef function<real(vector<real>)> func;
 vector<string> cpp_strtok(string str)
 {
 	vector<string> res;
-	// TODO dirty hack
+	// WARNING: hardcore space (' ') eating thing
+	// TODO change this dirty hack
 	char *c_str = const_cast<char*>(str.c_str());
 	char *p = strtok(c_str, " \n\t");
 	while (p != NULL) {
@@ -85,6 +86,7 @@ func read_rpolish(string str)
 		binary ("*", fst * snd)
 		binary ("/", fst / snd)
 		binary ("^", pow(fst, snd))
+		unary ("abs", fabs(fst))
 		unary ("sin", sin(fst))
 		unary ("cos", cos(fst))
 		unary ("tg", tan(fst))
